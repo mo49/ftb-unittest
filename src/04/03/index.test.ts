@@ -2,7 +2,7 @@ import { getGreet } from ".";
 import * as Fetchers from "../fetchers";
 import { httpError } from "../fetchers/fixtures";
 
-jest.mock("../fetchers");
+jest.mock("../fetchers"); // 宣言
 
 describe("getGreet", () => {
   test("データ取得成功時：ユーザー名がない場合", async () => {
@@ -31,6 +31,7 @@ describe("getGreet", () => {
   test("データ取得失敗時、エラー相当のデータが例外としてスローされる", async () => {
     expect.assertions(1);
     jest.spyOn(Fetchers, "getMyProfile").mockRejectedValueOnce(httpError);
+    // await expect(getGreet()).rejects.toMatchObject(httpError);
     try {
       await getGreet();
     } catch (err) {
