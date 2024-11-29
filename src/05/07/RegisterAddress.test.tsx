@@ -7,7 +7,7 @@ import {
   inputDeliveryAddress,
 } from "./testingUtils";
 
-jest.mock("./fetchers");
+jest.mock("./fetchers"); // mock宣言
 
 async function fillValuesAndSubmit() {
   const contactNumber = await inputContactNumber();
@@ -20,7 +20,7 @@ async function fillValuesAndSubmit() {
 async function fillInvalidValuesAndSubmit() {
   const contactNumber = await inputContactNumber({
     name: "田中 太郎",
-    phoneNumber: "abc-defg-hijkl",
+    phoneNumber: "abc-defg-hijkl", // NG
   });
   const deliveryAddress = await inputDeliveryAddress();
   const submitValues = { ...contactNumber, ...deliveryAddress };
@@ -55,6 +55,7 @@ test("バリデーションエラー時「不正な入力値が含まれてい�
 });
 
 test("不明なエラー時「不明なエラーが発生しました」が表示される", async () => {
+  // モック関数を実行していないのでリクエストを処理できない
   render(<RegisterAddress />);
   await fillValuesAndSubmit();
   expect(screen.getByText("不明なエラーが発生しました")).toBeInTheDocument();

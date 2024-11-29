@@ -56,7 +56,7 @@ async function clickSubmit() {
 }
 
 function mockHandleSubmit() {
-  const mockFn = jest.fn();
+  const mockFn = jest.fn(); // Assertで利用するために関数をモック化
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
