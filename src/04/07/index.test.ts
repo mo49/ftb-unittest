@@ -2,11 +2,11 @@ import { greetByTime } from ".";
 
 describe("greetByTime(", () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    jest.useFakeTimers(); // 偽のタイマーを使う
   });
 
   afterEach(() => {
-    jest.useRealTimers();
+    jest.useRealTimers(); // タイマーを元に戻す
   });
 
   test("朝は「おはよう」を返す", () => {

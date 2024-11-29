@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { InputAccount } from "./InputAccount";
 
-const user = userEvent.setup();
+const user = userEvent.setup(); // ユーザー操作をシミュレートするための設定
 
 test("fieldset のアクセシブルネームは、legend を引用している", () => {
   render(<InputAccount />);
@@ -15,7 +15,7 @@ test("メールアドレス入力欄", async () => {
   render(<InputAccount />);
   const textbox = screen.getByRole("textbox", { name: "メールアドレス" });
   const value = "taro.tanaka@example.com";
-  await user.type(textbox, value);
+  await user.type(textbox, value); // 入力操作のシミュレート
   expect(screen.getByDisplayValue(value)).toBeInTheDocument();
 });
 

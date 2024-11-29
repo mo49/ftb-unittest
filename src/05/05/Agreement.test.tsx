@@ -3,6 +3,8 @@ import { Agreement } from "./Agreement";
 
 test("fieldset のアクセシブルネームは、legend を引用している", () => {
   render(<Agreement />);
+  // divではgroupとして取得できないので、
+  // テストを書くことでアクセシビリティへ配慮する機会が増える
   expect(
     screen.getByRole("group", { name: "利用規約の同意" })
   ).toBeInTheDocument();

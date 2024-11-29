@@ -77,6 +77,7 @@ describe("過去のお届け先がない場合", () => {
   test("入力・送信すると、入力内容が送信される", async () => {
     const [mockFn, onSubmit] = mockHandleSubmit();
     render(<Form onSubmit={onSubmit} />);
+    // インタラクション関数を呼び出す
     const contactNumber = await inputContactNumber();
     const deliveryAddress = await inputDeliveryAddress();
     await clickSubmit();
@@ -93,7 +94,7 @@ describe("過去のお届け先がない場合", () => {
 
 describe("過去のお届け先がある場合", () => {
   test("設問に答えるまで、お届け先を選べない", () => {
-    render(<Form deliveryAddresses={deliveryAddresses} />);
+    render(<Form deliveryAddresses={deliveryAddresses} />); // 過去のお届け先を渡す
     expect(
       screen.getByRole("group", { name: "新しいお届け先を登録しますか？" })
     ).toBeInTheDocument();
